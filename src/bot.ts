@@ -29,7 +29,7 @@ export class Momo {
 
     private _botReady() {
         this._scheduleHandler = new ScheduleHandler(this);
-        console.log(`Logged in as ${this._client.user.tag}`);
+        console.log(`Logged in as ${this._client.user?.tag}`);
     }
 
 }

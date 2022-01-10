@@ -7,8 +7,7 @@
     "start": "node ./index.js",
     "start:nodemon": "nodemon --exec \"npm run tsnode\" ./src/index.ts",
     "build": "tsc -p .",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "start:dev": "cd ./src && ts-node index.ts"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",

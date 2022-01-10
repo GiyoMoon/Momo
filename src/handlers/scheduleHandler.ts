@@ -12,6 +12,10 @@ export class ScheduleHandler {
       console.error(`Couldn't get events from the environment`);
       return;
     }
+    if (!process.env.NOTIFICATION_CHANNEL_ID) {
+      console.error(`No notification channel configured`);
+      return;
+    }
     this._events = JSON.parse(process.env.EVENT_JSON);
 
     this._momo.client.channels.fetch(process.env.NOTIFICATION_CHANNEL_ID).then(channel => {
