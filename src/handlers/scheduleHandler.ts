@@ -25,6 +25,12 @@ export class ScheduleHandler {
     this._startSchedules();
   }
 
+  public createJob(date: Date, msg: string) {
+    ns.scheduleJob(date, async () => {
+      this._notificationChannel.send(msg);
+    });
+  }
+
   private _startSchedules() {
     for (const event of this._events) {
       ns.scheduleJob(event.cron, async () => {
