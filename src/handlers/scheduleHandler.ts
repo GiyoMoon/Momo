@@ -27,8 +27,9 @@ export class ScheduleHandler {
 
   private _startSchedules() {
     for (const event of this._events) {
-      ns.scheduleJob(event.cron, () => {
-        this._notificationChannel.send(event.msg.join('\n'));
+      ns.scheduleJob(event.cron, async () => {
+        const notificationMessage = await this._notificationChannel.send(event.msg.join('\n'));
+        await notificationMessage.react('✅');
       });
     }
   }
