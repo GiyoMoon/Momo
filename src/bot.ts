@@ -58,7 +58,11 @@ export class Momo {
         this._client.on('messageCreate', (msg) => this._messageListener.evalMessage(msg));
     }
 
-    private _botReady() {
+    private async _botReady() {
+        if (process.env.GUILD_ID) {
+            await this._client.guilds.fetch(process.env.GUILD_ID);
+            this._client.guilds.cache.get(process.env.GUILD_ID)?.channels.fetch();
+        }
         this._scheduleHandler = new ScheduleHandler(this);
         console.log(`Logged in as ${this._client.user?.tag}`);
     }
